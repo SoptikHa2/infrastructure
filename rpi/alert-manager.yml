@@ -1,8 +1,0 @@
-alert-manager:
-  image: prom/alertmanager
-  volumes:
-    - "./alertmanager.yml:/alertmanager/alertmanager.yml"
-  networks:
-    - localprom
-  ports:
-    - 9093:9093

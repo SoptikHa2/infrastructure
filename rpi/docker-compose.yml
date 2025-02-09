@@ -1,12 +1,6 @@
-version: '3'
-
 include:
-  - prometheus.yml
-  - alert-manager.yml
-
-services:
-  prometheus: prometheus
-  alert-manager: alert-manager
+  - services/prometheus.yml
+  - services/alert-manager.yml
   
 networks:
   localprom:
