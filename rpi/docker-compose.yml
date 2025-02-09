@@ -1,0 +1,11 @@
+version: '3'
+
+include:
+  - prometheus.yaml
+
+services:
+  prometheus: rpi-prom
+  
+networks:
+  localprom:
+    driver: bridge
