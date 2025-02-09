@@ -1,6 +1,7 @@
 services:
   alert-manager:
     image: prom/alertmanager
+    restart: unless-stopped
     volumes:
       - "./alertmanager.yml:/alertmanager/alertmanager.yml"
     networks:

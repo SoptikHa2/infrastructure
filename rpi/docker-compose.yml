@@ -1,6 +1,7 @@
 include:
   - services/prometheus.yml
   - services/alert-manager.yml
+  - services/grafana.yml
   
 networks:
   localprom:
