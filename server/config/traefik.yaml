@@ -1,0 +1,17 @@
+entryPoints:
+  web:
+    address: ":80"
+  websecure:
+    address: ":443"
+  internal:
+    address: ":8080"
+
+
+
+http:
+  routers:
+    grafana:
+      entryPoints:
+        - "internal"
+      rule: "PathPrefix(`/grafana`)"
+      service: "grafana"

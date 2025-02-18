@@ -1,0 +1,9 @@
+include:
+  #- services/prometheus.yml
+  #- services/alert-manager.yml
+  - services/grafana.yml
+  - services/traefik.yml
+
+networks:
+  local:
+    driver: bridge
