@@ -1,20 +1,13 @@
 services:
   traefik:
-    image: "traefik:v3.3"
-    container_name: "traefik"
-    command:
-      - "--log.level=DEBUG"
-      - "--api.insecure=true"
-      - "--providers.docker=true"
-      - "--providers.docker.exposedbydefault=false"
-      - "--configFile=/config/traefik.yaml"
+    image: traefik:v3.3
+    command: 
+      - --api.insecure=true 
+      - --providers.docker
+      - --configFile=/config/traefik.yml
     ports:
       - "80:80"
-      - "443:443"
       - "8080:8080"
     volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock:ro"
-      - "./config:/config"
-    networks:
-      - local
-
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ../conifg:/config

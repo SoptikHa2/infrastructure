@@ -1,8 +1,9 @@
 include:
-  #- services/prometheus.yml
+  - services/prometheus.yml
   #- services/alert-manager.yml
   - services/grafana.yml
   - services/traefik.yml
+  - services/node-exporter.yml
 
 networks:
   local:

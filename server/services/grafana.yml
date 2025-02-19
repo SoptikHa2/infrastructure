@@ -4,7 +4,12 @@ services:
     container_name: grafana
     restart: unless-stopped
     user: '1000'
+    environment:
+      - GF_SERVER_ROOT_URL=%(protocol)s://%(domain)s:%(http_port)s/grafana
+      - GF_SERVER_SERVE_FROM_SUB_PATH=true
     volumes:
      - /data/grafana:/var/lib/grafana
     labels:
-      - "traefik.http.routers.whoami.rule=Host(`whoami.docker.localhost`)"
+      - "traefik.http.routers.grafana.rule=PathPrefix(`/grafana`)"
+      - "traefik.http.middlewares.grafana.ipwhitelist.sourcerange=10.0.0.0/8, 192.168.0.0/16"
+      - "traefik.enable=true"
