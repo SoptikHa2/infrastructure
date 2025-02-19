@@ -1,10 +1,7 @@
 include:
   - services/prometheus.yml
-  #- services/alert-manager.yml
+  - services/alert-manager.yml
   - services/grafana.yml
   - services/traefik.yml
   - services/node-exporter.yml
-
-networks:
-  local:
-    driver: bridge
+  - services/home-assistant.yml

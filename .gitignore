@@ -1,0 +1,4 @@
+**/config/HA/*
+!**/config/HA/configuration.yaml
+!**/config/HA/scenes.yaml
+!**/config/HA/scripts.yaml

@@ -4,7 +4,13 @@ global:
 scrape_configs:
   - job_name: 'prometheus'
     static_configs:
-      - targets: ['localhost:9090']
+      - targets: ['prometheus:9090']
   - job_name: 'local_node'
     static_configs:
       - targets: ['node_exporter:9100']
+  - job_name: 'home_assistant'
+    metrics_path: /api/prometheus
+    static_configs:
+      # due to HA privileged, it is setting its network mode to host
+      # this causes docker DNS to not work, so we have to use docker host IP
+      - targets: ['172.17.0.1:8123']

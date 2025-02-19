@@ -1,0 +1,17 @@
+services:
+  homeassistant:
+    container_name: homeassistant
+    image: "ghcr.io/home-assistant/home-assistant:stable"
+    user: '1000'
+    volumes:
+      - ../config/HA:/config
+      - /etc/localtime:/etc/localtime:ro
+      - /run/dbus:/run/dbus:ro
+    restart: unless-stopped
+    labels:
+      - "traefik.http.routers.ha.rule=PathPrefix(`/home-assistant`)"
+      - "traefik.http.middlewares.ha.ipwhitelist.sourcerange=10.0.0.0/8, 192.168.0.0/16"
+      - "traefik.enable=true"
+    privileged: true
+    ports:
+      - "8123:8123"
