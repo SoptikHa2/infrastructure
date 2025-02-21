@@ -1,4 +1,5 @@
 **/config/HA/*
+!**/config/HA/automations.yaml
 !**/config/HA/configuration.yaml
 !**/config/HA/scenes.yaml
 !**/config/HA/scripts.yaml
