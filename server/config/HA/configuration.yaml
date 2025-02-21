@@ -13,3 +13,10 @@ scene: !include scenes.yaml
 prometheus:
   namespace: ha
   requires_auth: false
+
+http:
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 172.18.0.3
+    - 127.0.0.1
+    - ::1
