@@ -17,6 +17,6 @@ prometheus:
 http:
   use_x_forwarded_for: true
   trusted_proxies:
-    - 172.18.0.3
+    - 172.18.0.0/24
     - 127.0.0.1
     - ::1
