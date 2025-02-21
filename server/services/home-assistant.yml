@@ -12,6 +12,7 @@ services:
       - "traefik.http.routers.ha.rule=PathPrefix(`/home-assistant`)"
       - "traefik.http.middlewares.ha.ipwhitelist.sourcerange=10.0.0.0/8, 192.168.0.0/16, 172.17.0.1/24"
       - "traefik.enable=true"
+      - "traefik.http.middlewares.test-stripprefix.stripprefix.prefixes=/home-assistant"
     privileged: true
     ports:
       - "8123:8123"
