@@ -1,0 +1,37 @@
+variant: fcos
+version: 1.1.0
+passwd:
+  users:
+    - name: core
+      ssh_authorized_keys_local:
+        - id_rsa.pub
+      groups:
+        - wheel
+    - name: runner
+      ssh_authorized_keys_local:
+        - id_rsa.pub
+storage:
+  files:
+    - path: /etc/hostname
+      mode: 0644
+      contents:
+        inline: krabicka
+    - path: /etc/zincati/config.d/55-updates-strategy.toml
+      contents:
+        inline: |
+          [updates]
+          strategy = "periodic"
+          [[updates.periodic.window]]
+          days = [ "Sun", "Mon" ]
+          start_time = "02:30"
+          length_minutes = 60
+  links:
+    - path: /etc/localtime
+      target: ../usr/share/zoneinfo/Europe/Prague
+systemd:
+  units:
+    # While docker is disabled by default, it is *way* to easy to activate
+    # by accident.
+    # https://docs.fedoraproject.org/en-US/fedora-coreos/faq/#_can_i_run_containers_via_docker_and_podman_at_the_same_time
+    - name: docker.service
+      mask: true
