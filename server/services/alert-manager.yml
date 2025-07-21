@@ -1,7 +1,7 @@
 services:
   alert-manager:
     container_name: alert-manager
-    image: prom/alertmanager
+    image: docker.io/prom/alertmanager
     user: '1000'
     restart: unless-stopped
     volumes:

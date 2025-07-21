@@ -1,6 +1,6 @@
 services:
   grafana:
-    image: grafana/grafana-enterprise
+    image: docker.io/grafana/grafana-enterprise
     container_name: grafana
     restart: unless-stopped
     user: '1000'
